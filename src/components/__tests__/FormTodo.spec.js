@@ -41,11 +41,10 @@ describe('<FormTodo/>', () => {
   });
 
   it("should submit the form successfully", () => {
-    const onSubmit = jest.fn();
-    const wrapper  = mount(<FormTodo handleSubmit={onSubmit} />);
-    const form = wrapper.find('form');
-    form.simulate('submit');
-    expect(onSubmit).toHaveBeenCalledTimes(1);
+    render(<FormTodo handleSubmit = {mockedAdd}/>)
+    fireEvent.click(screen.queryByTestId('sendButton'));
+    expect(mockedAdd).toHaveBeenCalledTimes(1);
+  
   });
 
   it("should clear the text field", () => {
@@ -53,4 +52,3 @@ describe('<FormTodo/>', () => {
   });
 
 });
-
